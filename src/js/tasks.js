@@ -1,6 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { renderTasks } from './render-tasks';
 
+const tasks = [];
 export function addTasks(event) {
   event.preventDefault();
   //   const title = event.target.elements.taskName.value.trim();
@@ -16,6 +18,7 @@ export function addTasks(event) {
     title,
     description,
   };
-  console.log(task);
+  tasks.push(task);
+  renderTasks(tasks);
   event.target.reset();
 }
