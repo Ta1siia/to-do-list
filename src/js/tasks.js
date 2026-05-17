@@ -1,8 +1,10 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { renderTasks } from './render-tasks';
+import { getFromLs, saveInLs, TASKS_LS_KEY } from './local-storage-api';
 
-const tasks = [];
+const tasks = getFromLs(TASKS_LS_KEY) || [];
+
 export function addTasks(event) {
   event.preventDefault();
   //   const title = event.target.elements.taskName.value.trim();
@@ -20,5 +22,10 @@ export function addTasks(event) {
   };
   tasks.push(task);
   renderTasks(tasks);
+  saveInLs(TASKS_LS_KEY, tasks);
   event.target.reset();
-}
+};
+
+export function initTask() {
+  renderTasks(tasks);
+};

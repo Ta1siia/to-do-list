@@ -1,4 +1,6 @@
 import { refs } from './js/refs';
-import { addTasks } from './js/tasks';
+import { addTasks, initTask } from './js/tasks';
+
+initTask();
 
 refs.form.addEventListener('submit', addTasks);
